@@ -9,7 +9,7 @@ public class LightController : MonoBehaviour
 
     private void Start()
     {
-        SetLightColor(new int[] { 1, 0, 1 });
+        SetLightColor(new int[] { 0, 0, 0 });
     }
 
     public void SetLightColor(int[] colorInput) // 0 or 1
