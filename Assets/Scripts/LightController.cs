@@ -6,14 +6,20 @@ using UnityEngine.Rendering.Universal;
 public class LightController : MonoBehaviour
 {
     [SerializeField] private Light2D _light;
+    [SerializeField] private ButtonsControlScript _buttonsControlScript;
 
     private void Start()
     {
-        SetLightColor(new int[] { 0, 0, 0 });
+        SetLightColor(new ColorInput { R = 0, G = 0, B = 0 });
     }
 
-    public void SetLightColor(int[] colorInput) // 0 or 1
+    public ColorInput GetCurrentInput()
     {
-        _light.color = new Color(colorInput[0], colorInput[1], colorInput[2]);
+        return _buttonsControlScript.ColorInput;
+    }
+
+    public void SetLightColor(ColorInput colorInput) // 0 or 1
+    {
+        _light.color = new Color(colorInput.R, colorInput.G, colorInput.B);
     }
 }

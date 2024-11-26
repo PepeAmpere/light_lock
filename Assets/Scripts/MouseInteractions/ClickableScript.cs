@@ -34,7 +34,6 @@ public class ClickableScript : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("OnPointerClick");
         if (!Interactable)
             return;
 

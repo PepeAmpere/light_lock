@@ -7,7 +7,8 @@ public class ButtonsControlScript : MonoBehaviour
     public LightController LightController;
     public List<ColorSwitchScript> SwitchScriptList;
 
-    private int[] _colorInput = new int[3];
+    private ColorInput _colorInput = new ColorInput { };
+    public ColorInput ColorInput { get { return _colorInput; } }
 
     private void Start()
     {
@@ -16,18 +17,17 @@ public class ButtonsControlScript : MonoBehaviour
             switchScript.OnToggle.AddListener(OnSwitchToggle);
         }
     }
-
     private void OnSwitchToggle()
     {
-        _colorInput = new int[3];
+        var colorInput = new int[3];
         foreach (ColorSwitchScript switchScript in SwitchScriptList)
         {
             if (switchScript.State)
             {
-                _colorInput[switchScript.ColorIndex] = 1;
+                colorInput[switchScript.ColorIndex] = 1;
             }
         }
-
+        _colorInput = new ColorInput(colorInput);
         LightController.SetLightColor(_colorInput);
     }
 }
